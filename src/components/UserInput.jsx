@@ -15,8 +15,8 @@ export default function UserInput({onChange, userInput}) {
                     <input
                         type="number"
                         required
-                        value={userInput.anualInvestment}
-                        onChange={(e) => onChange('anualInvestment', e.target.value)} />
+                        value={userInput.annualInvestment}
+                        onChange={(e) => onChange('annualInvestment', e.target.value)} />
                 </p>
             </div>
 

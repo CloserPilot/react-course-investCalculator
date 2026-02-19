@@ -5,17 +5,19 @@ import Results from "./components/Results";
 
 function App() {
   const [userInput, setUserInput] = useState({
-    initialInvestment: '1000',
-    anualInvestment: '1200',
-    expectedReturn: '6',
-    duration: '10'
+    initialInvestment: 1000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 10
   });
+
+  const inputIsValid = userInput.duration>=1;
 
   function handleChange(inputIdentifier, newValue) {
     setUserInput((prevState) => {
       return {
         ...prevState,
-        [inputIdentifier]: newValue
+        [inputIdentifier]: +newValue
       }
     })
   }
@@ -25,7 +27,8 @@ function App() {
     <>
       <Header />
       <UserInput onChange={handleChange} userInput={userInput} />
-      <Results input={userInput} />
+      {!inputIsValid && <p className="center">Please enter a duration greather than zero</p>}
+      {inputIsValid && <Results input={userInput}/> }
     </>
   )
 }
